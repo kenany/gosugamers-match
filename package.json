@@ -1,0 +1,33 @@
+{
+  "name": "gosugamers-match",
+  "version": "0.0.0",
+  "description": "Parse a CS:GO match page from GosuGamers",
+  "keywords": [
+    "counter-strike"
+  ],
+  "repository": "KenanY/gosugamers-match",
+  "license": "MIT",
+  "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "LICENSE.txt"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/index.js"
+  },
+  "dependencies": {
+    "cheerio": "^0.18.0",
+    "concat-stream": "^1.4.6",
+    "hyperquest": "^1.0.1",
+    "moment": "^2.8.3"
+  },
+  "devDependencies": {
+    "lodash.isfunction": "^2.4.1",
+    "lodash.isplainobject": "^2.4.1",
+    "tape": "^3.0.0"
+  }
+}
