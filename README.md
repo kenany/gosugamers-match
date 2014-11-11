@@ -1,6 +1,7 @@
 # gosugamers-match
 
 [![Build Status][travis-svg]][travis]
+[![Dependency Status][gemnasium-svg]][gemnasium]
 
 Parse a CS:GO match page from GosuGamers.
 
@@ -50,3 +51,5 @@ is an _Object_ containing some info on the match described in _String_ `url`.
 
    [travis]: https://travis-ci.org/KenanY/gosugamers-match
    [travis-svg]: https://img.shields.io/travis/KenanY/gosugamers-match.svg
+   [gemnasium]: https://gemnasium.com/KenanY/gosugamers-match
+   [gemnasium-svg]: https://img.shields.io/gemnasium/KenanY/gosugamers-match.svg
