@@ -1,5 +1,7 @@
 # gosugamers-match
 
+[![Build Status][travis-svg]][travis]
+
 Parse a CS:GO match page from GosuGamers.
 
 GosuGamers provides no API so I have no choice but to download their HTML pages,
@@ -44,3 +46,7 @@ var gosugamersMatch = require('gosugamers-match');
 
 Calls `callback(error, data)`, where `error` is any _Error_ encounted and `data`
 is an _Object_ containing some info on the match described in _String_ `url`.
+
+
+   [travis]: https://travis-ci.org/KenanY/gosugamers-match
+   [travis-svg]: https://img.shields.io/travis/KenanY/gosugamers-match.svg
