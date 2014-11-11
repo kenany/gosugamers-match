@@ -1,6 +1,6 @@
 {
   "name": "gosugamers-match",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Parse a CS:GO match page from GosuGamers",
   "keywords": [
     "counter-strike"
