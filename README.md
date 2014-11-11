@@ -43,4 +43,4 @@ var gosugamersMatch = require('gosugamers-match');
 ### `gosugamersMatch(url, callback)`
 
 Calls `callback(error, data)`, where `error` is any _Error_ encounted and `data`
-is an _Object_ containing some info on the match described in _String_ `url`.s
+is an _Object_ containing some info on the match described in _String_ `url`.
