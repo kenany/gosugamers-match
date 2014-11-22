@@ -21,6 +21,14 @@ function parseMatchPage(url, callback) {
 
     ret.date = moment($('.datetime').text() + ' +0100', 'MMMM DD, YYYY at HH:mm ZZ').unix();
 
+    var games = $('.match-game-tab-content');
+    games.each(function(i, e) {
+      i++;
+      ret['round' + i] = {};
+      ret['round' + i].home = parseInt($('.totals span.home.score', e).text(), 10);
+      ret['round' + i].away = parseInt($('.totals span.away.score', e).text(), 10);
+    });
+
     callback(null, ret);
   }));
 }

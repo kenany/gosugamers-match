@@ -14,7 +14,7 @@ test('exports a function', function(t) {
 });
 
 test('parses match page', function(t) {
-  t.plan(6);
+  t.plan(12);
 
   gosugamersMatch(url, function(error, data) {
     t.ok(isPlainObject(data));
@@ -23,5 +23,11 @@ test('parses match page', function(t) {
     t.equal(data.score1, 1);
     t.equal(data.score2, 3);
     t.equal(data.date, 1415548800);
+    t.equal(data.round1.home, 9);
+    t.equal(data.round1.away, 16);
+    t.equal(data.round2.home, 6);
+    t.equal(data.round2.away, 16);
+    t.equal(data.round3.home, 19);
+    t.equal(data.round3.away, 16);
   });
 });
