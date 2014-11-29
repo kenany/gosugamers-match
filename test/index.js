@@ -18,9 +18,10 @@ test('exports a function', function(t) {
 });
 
 test('parses match page', function(t) {
-  t.plan(12);
+  t.plan(13);
 
   gosugamersMatch(url, function(error, data) {
+    t.error(error);
     t.ok(isPlainObject(data));
     t.equal(data.opponent1, 'Team LDLC');
     t.equal(data.opponent2, 'fnatic');
@@ -37,9 +38,10 @@ test('parses match page', function(t) {
 });
 
 test('parses league match page', function(t) {
-  t.plan(6);
+  t.plan(7);
 
   gosugamersMatch(url2, function(error, data) {
+    t.error(error);
     t.ok(isPlainObject(data));
     t.equal(data.opponent1, 'Cloud 9');
     t.equal(data.opponent2, 'Alliance LoL');
