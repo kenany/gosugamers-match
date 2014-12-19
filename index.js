@@ -23,17 +23,16 @@ function parseMatchPage(url, callback) {
     ret.date = moment($('.datetime').text() + ' +0100', 'MMMM DD, YYYY at HH:mm ZZ').unix();
 
     var games = $('.match-game-tab-content');
+    ret.rounds = [];
     games.each(function(i, e) {
-      i++;
-
       var home = parseInt($('.totals span.home.score', e).text(), 10);
       if (isNaN(home)) {
         return;
       }
 
-      ret['round' + i] = {};
-      ret['round' + i].home = home;
-      ret['round' + i].away = parseInt($('.totals span.away.score', e).text(), 10);
+      var round = ret.rounds[i] = {};
+      round.home = home;
+      round.away = parseInt($('.totals span.away.score', e).text(), 10);
     });
 
     callback(null, ret);

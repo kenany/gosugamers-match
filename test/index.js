@@ -29,22 +29,12 @@ test('parses match page', function(t) {
       score1: 1,
       score2: 3,
       date: 1415548800,
-      round1: {
-        home: 9,
-        away: 16
-      },
-      round2: {
-        home: 6,
-        away: 16
-      },
-      round3: {
-        home: 19,
-        away: 16
-      },
-      round4: {
-        home: 11,
-        away: 16
-      }
+      rounds: [
+        {home: 9, away: 16},
+        {home: 6, away: 16},
+        {home: 19, away: 16},
+        {home: 11, away: 16}
+      ]
     });
   });
 });
