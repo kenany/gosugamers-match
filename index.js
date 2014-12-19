@@ -14,8 +14,32 @@ function parseMatchPage(url, callback) {
   stream.pipe(concat(function(data) {
     var $ = cheerio.load(data);
 
-    ret.opponent1 = $('.opponent1 a').text();
-    ret.opponent2 = $('.opponent2 a').text();
+    ret.home = {};
+    ret.away = {};
+
+    ret.home.name = $('.opponent1 a').text();
+    ret.away.name = $('.opponent2 a').text();
+
+    ret.home.roster = [];
+    ret.away.roster = [];
+
+    var players = $('.opponent-left td.player');
+    players.each(function(i, e) {
+      var player = $('a', e).text();
+      if (ret.home.roster.indexOf(player) > -1) {
+        return;
+      }
+      ret.home.roster.push(player);
+    });
+
+    var players = $('.opponent-right td.player');
+    players.each(function(i, e) {
+      var player = $('a', e).text();
+      if (ret.away.roster.indexOf(player) > -1) {
+        return;
+      }
+      ret.away.roster.push(player);
+    });
 
     ret.score1 = parseInt($('.vs .hidden').children().first().text(), 10);
     ret.score2 = parseInt($('.vs .hidden').children().last().text(), 10);
@@ -23,7 +47,9 @@ function parseMatchPage(url, callback) {
     ret.date = moment($('.datetime').text() + ' +0100', 'MMMM DD, YYYY at HH:mm ZZ').unix();
 
     var games = $('.match-game-tab-content');
-    ret.rounds = [];
+    if (games.length > 1) {
+      ret.rounds = [];
+    }
     games.each(function(i, e) {
       var home = parseInt($('.totals span.home.score', e).text(), 10);
       if (isNaN(home)) {

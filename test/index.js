@@ -24,8 +24,26 @@ test('parses match page', function(t) {
     t.error(error);
     t.ok(isPlainObject(data));
     t.deepEqual(data, {
-      opponent1: 'Team LDLC',
-      opponent2: 'fnatic',
+      home: {
+        name: 'Team LDLC',
+        roster: [
+          'NBK',
+          'shox',
+          'SmithZz',
+          'Happy-',
+          'kioShiMa'
+        ]
+      },
+      away: {
+        name: 'fnatic',
+        roster: [
+          'flusha',
+          'JW',
+          'pronax',
+          'olofmiester',
+          'KRIMZ'
+        ]
+      },
       score1: 1,
       score2: 3,
       date: 1415548800,
@@ -40,15 +58,35 @@ test('parses match page', function(t) {
 });
 
 test('parses league match page', function(t) {
-  t.plan(7);
+  t.plan(3);
 
   gosugamersMatch(url2, function(error, data) {
     t.error(error);
     t.ok(isPlainObject(data));
-    t.equal(data.opponent1, 'Cloud 9');
-    t.equal(data.opponent2, 'Alliance LoL');
-    t.equal(data.score1, 0);
-    t.equal(data.score2, 1);
-    t.equal(data.date, 1411808400);
+    t.deepEqual(data, {
+      home: {
+        name: 'Cloud 9',
+        roster: [
+          'Hai L9',
+          'SnEaKyCaStRoO',
+          'Balls',
+          'Meteos',
+          'LemonNation'
+        ]
+      },
+      away: {
+        name: 'Alliance LoL',
+        roster: [
+          'Nyph',
+          'Shook',
+          'Tabzz',
+          'Froggen',
+          'Wickd'
+        ]
+      },
+      score1: 0,
+      score2: 1,
+      date: 1411808400
+    });
   });
 });
