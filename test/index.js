@@ -18,22 +18,34 @@ test('exports a function', function(t) {
 });
 
 test('parses match page', function(t) {
-  t.plan(13);
+  t.plan(3);
 
   gosugamersMatch(url, function(error, data) {
     t.error(error);
     t.ok(isPlainObject(data));
-    t.equal(data.opponent1, 'Team LDLC');
-    t.equal(data.opponent2, 'fnatic');
-    t.equal(data.score1, 1);
-    t.equal(data.score2, 3);
-    t.equal(data.date, 1415548800);
-    t.equal(data.round1.home, 9);
-    t.equal(data.round1.away, 16);
-    t.equal(data.round2.home, 6);
-    t.equal(data.round2.away, 16);
-    t.equal(data.round3.home, 19);
-    t.equal(data.round3.away, 16);
+    t.deepEqual(data, {
+      opponent1: 'Team LDLC',
+      opponent2: 'fnatic',
+      score1: 1,
+      score2: 3,
+      date: 1415548800,
+      round1: {
+        home: 9,
+        away: 16
+      },
+      round2: {
+        home: 6,
+        away: 16
+      },
+      round3: {
+        home: 19,
+        away: 16
+      },
+      round4: {
+        home: 11,
+        away: 16
+      }
+    });
   });
 });
 

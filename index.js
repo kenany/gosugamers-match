@@ -2,6 +2,7 @@ var hyperquest = require('hyperquest');
 var cheerio = require('cheerio');
 var concat = require('concat-stream');
 var moment = require('moment');
+var isNaN = require('lodash.isnan');
 
 function parseMatchPage(url, callback) {
   var ret = {};
@@ -24,8 +25,14 @@ function parseMatchPage(url, callback) {
     var games = $('.match-game-tab-content');
     games.each(function(i, e) {
       i++;
+
+      var home = parseInt($('.totals span.home.score', e).text(), 10);
+      if (isNaN(home)) {
+        return;
+      }
+
       ret['round' + i] = {};
-      ret['round' + i].home = parseInt($('.totals span.home.score', e).text(), 10);
+      ret['round' + i].home = home;
       ret['round' + i].away = parseInt($('.totals span.away.score', e).text(), 10);
     });
 
