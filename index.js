@@ -47,7 +47,7 @@ function parseMatchPage(url, callback) {
     ret.date = moment($('.datetime').text() + ' +0100', 'MMMM DD, YYYY at HH:mm ZZ').unix();
 
     var games = $('.match-game-tab-content');
-    if (games.length > 1) {
+    if (games.length) {
       ret.rounds = [];
     }
     games.each(function(i, e) {
@@ -60,6 +60,10 @@ function parseMatchPage(url, callback) {
       round.home = home;
       round.away = parseInt($('.totals span.away.score', e).text(), 10);
     });
+
+    if (!ret.rounds.length) {
+      delete ret.rounds;
+    }
 
     callback(null, ret);
   }));

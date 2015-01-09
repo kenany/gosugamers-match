@@ -12,6 +12,11 @@ var url2 = 'http://www.gosugamers.net/lol/tournaments/4731-2014-world-' +
            'championship/1245-group-stage/4735-group-d/matches/55832-cloud-9-' +
            'vs-alliance-lol';
 
+// a best-of-1 game
+var url3 = 'http://www.gosugamers.net/counterstrike/tournaments/5450-cevo-' +
+           'professional-season-6-regular-season/matches/62398-lunatik-vs-' +
+           'elevate';
+
 test('exports a function', function(t) {
   t.plan(1);
   t.ok(isFunction(gosugamersMatch));
@@ -87,6 +92,31 @@ test('parses league match page', function(t) {
       score1: 0,
       score2: 1,
       date: 1411808400
+    });
+  });
+});
+
+test('parses best-of-1 match page', function(t) {
+  t.plan(3);
+
+  gosugamersMatch(url3, function(error, data) {
+    t.error(error);
+    t.ok(isPlainObject(data));
+    t.deepEqual(data, {
+      home: {
+        name: 'LunatiK',
+        roster: [ 'flowsicK', 'valens', 'Relyks', 'Slemmy', 'autimatic' ]
+      },
+      away: {
+        name: 'eLevate',
+        roster: [ 'Storm-', 'Xp3', 'roca', 'Rush', 'EliGE-' ]
+      },
+      score1: 0,
+      score2: 1,
+      date: 1420686000,
+      rounds: [
+        { home: 11, away: 16 }
+      ]
     });
   });
 });
