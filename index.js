@@ -61,7 +61,7 @@ function parseMatchPage(url, callback) {
       round.away = parseInt($('.totals span.away.score', e).text(), 10);
     });
 
-    if (!ret.rounds.length) {
+    if (!ret.rounds || !ret.rounds.length) {
       delete ret.rounds;
     }
 
