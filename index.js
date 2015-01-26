@@ -62,7 +62,7 @@ function parseMatchPage(url, callback) {
     });
 
     if (!ret.rounds || !ret.rounds.length) {
-      delete ret.rounds;
+      ret.rounds = null;
     }
 
     callback(null, ret);

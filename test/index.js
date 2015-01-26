@@ -91,7 +91,8 @@ test('parses league match page', function(t) {
       },
       score1: 0,
       score2: 1,
-      date: 1411808400
+      date: 1411808400,
+      rounds: null
     });
   });
 });
