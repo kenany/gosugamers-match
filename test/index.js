@@ -105,7 +105,7 @@ test('parses best-of-1 match page', function(t) {
     t.ok(isPlainObject(data));
     t.deepEqual(data, {
       home: {
-        name: 'LunatiK',
+        name: 'LunatiK: A',
         roster: [ 'flowsicK', 'valens', 'Relyks', 'Slemmy', 'autimatic' ]
       },
       away: {
